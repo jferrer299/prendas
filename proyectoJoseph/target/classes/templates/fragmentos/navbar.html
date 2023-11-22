@@ -48,6 +48,12 @@
                                 <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">
                                     <i class="fas fa-sign-out-alt"></i> Salir</a>
                                 </li>
+                                <li>
+                                    <span class="dropdown-item" th:text="#{header.menu.visitas} + ' App: ' + ${session.numVisitasApp}"></span>
+                                </li>
+                                <li>
+                                    <span class="dropdown-item" th:text="#{header.menu.visitas} + ' index: ' + ${session.numVisitasIndex}"></span>
+                                </li>
 
                             </ul>
                         </li>
