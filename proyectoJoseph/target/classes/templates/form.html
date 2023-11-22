@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!--Se utiliza el fragmento Encabezao-->
+
+<head th:replace="fragmentos/encabezado::encabezado(~{::title}, ~{::link})">
+
+<body>
+
+<!--se utiliza el fragmento de navbar-->
+<header th:replace="fragmentos/navbar::navbar" >  </header>
+
+<main class="container py-5">
+
+<!--  Se utiliza el fragmento de formulario-->
+
+  <div th:replace="fragmentos/formulario::formulario" ></div>
+
+</main>
+
+<!--Se utiliza el fragmento de footer-->
+
+<footer th:replace="fragmentos/footer::footer" ></footer>
+
+
+<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>
+

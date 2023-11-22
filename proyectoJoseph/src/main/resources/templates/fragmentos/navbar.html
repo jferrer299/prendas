@@ -1,0 +1,64 @@
+<header th:fragment="navbar" class="site-navbar" role="banner" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container"  >
+        <div class="row align-items-center">
+            <div class="col-11 col-xl-2">
+                <h1 class="mb-0 site-logo">
+                    <a href="#" class=" text-white mb-0" th:text="#{prenda.title}" >Prendas disponibles</a>
+                </h1>
+            </div>
+            <div class="col-12 col-md-10 d-none d-xl-block">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+
+                    <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+
+                        <li class="nav-item botonesInicio"    >
+                            <a class="nav-link" href="/" th:text="#{prenda.home}">Inicio</a>
+                        </li>
+
+                        <li class="nav-item botonesInicio"   >  <!--Preguntar coomo se hace para que no interfiera con editar o añadir-->
+                            <a class="nav-link" href="/prenda/new" th:text="#{prenda.new}" >Añadir prenda</a>
+                        </li>
+
+                        <li sec:authorize="isAuthenticated()" class="nav-item dropdown botonesInicio">
+                            <a class="nav-link dropdown-toggle" href="#" role a="button" data-bs-toggle="dropdown"
+                               aria-expanded="false" th:text="#{prenda.language}" >
+                                Idiomas
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" th:href="@{''(lang=es_ES)}">
+                                        <i class="fa fa-flag-es"></i> Español
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" th:href="@{''(lang=en_US)}">
+                                        <i class="fa fa-flag-gb" ></i> Inglés
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                <span th:text="${#authentication.name}">Opciones</span> <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">
+                                    <i class="fas fa-sign-out-alt"></i> Salir</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <input type="text" id="searchInput" placeholder="Buscar..." onkeyup="searchTable()">
+                        </li>
+                    </ul>
+                    <form th:action="@{/logout}" method="post" id="logoutForm" ></form>
+                </nav>
+                <script src="/js/buscadorTabla.js"></script>
+            </div>
+        </div>
+    </div>
+</header>

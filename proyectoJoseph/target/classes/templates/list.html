@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<!--Se utiliza el fragmento Encabezao-->
+
+<head th:replace="fragmentos/encabezado::encabezado(~{::title}, ~{::link})">
+
+<body>
+
+<!--se utiliza el fragmento de navbar-->
+<header th:replace="fragmentos/navbar::navbar" >  </header>
+
+<!--Se utiliza el fragmento de tabla -->
+
+<main>
+
+  <div th:replace="fragmentos/tabla::tabla" > </div>
+  <h1>Number of visits: <span th:text="${visitCount}">0</span></h1>
+</main>
+
+<!--Se utiliza el fragmento de footer-->
+
+<footer th:replace="fragmentos/footer::footer" ></footer>
+
+
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<div th:fragment="formulario" class="row g-5" id="cajaFormulario" >
+    <div class="col-md-7 col-lg-8">
+        <form id="formulario" method="post" action="#"
+              th:action="${prendaForm.id != 0} ? @{/prenda/edit/submit} : @{/prenda/new/submit}"
+              th:object="${prendaForm}">
+            <div class="row g-3">
+                <div class="col-sm-6"
+                     th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
+                    <label th:text="#{prenda.id}" for="id" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="id" placeholder="1"
+                           th:field="*{id}"
+                           th:attrappend="readonly=${prendaForm.id != 0} ? 'readonly' : null">
+                    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
+                          class="help-block" id="id-error">Errores</span>
+                </div>
+                <div class="col-sm-6">
+                    <label th:text="#{prenda.brand}" for="marca" class="form-label">Marca</label>
+                    <input type="text" class="form-control" id="marca" placeholder="Marca" th:field="*{marca}" />
+                </div>
+                <div class="col-sm-6">
+                    <label th:text="#{prenda.model}" for="modelo" class="form-label">Modelo</label>
+                    <input type="text" class="form-control" id="modelo"
+                           placeholder="Ejemplo: Air Max" th:field="*{modelo}" />
+                </div>
+                <div class="col-sm-6">
+                    <label th:text="#{prenda.price}" for="precio" class="form-label">Precio</label>
+                    <input type="tel" class="form-control" id="precio" placeholder="90" th:field="*{precio}" />
+                </div>
+
+                <div class="col-sm-6 form-check form-switch">
+                    <input th:text="#{prenda.inUse}" type="checkbox" class="form-check-input" id="usando" th:field="*{usando}">
+                    <label class="form-check-label" for="usando">En uso</label>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label th:text="#{prenda.type}" for="tipo">Tipo de prenda:</label>
+                    <select class="form-control" id="tipo" name="tipo" th:field="*{tipo}">
+                        <option value="">Selecciona un tipo de prenda</option>
+                        <option th:each="tipo : ${T(com.desarrolo.proyectojoseph.entidades.TipoPrenda).values()}"
+                                th:value="${tipo}" th:text="${tipo}"></option>
+                    </select>
+                </div>
+
+
+            </div>
+            <button type="submit" class="btn btn-primary botonEnviar">Enviar</button>
+        </form>
+
+    </div>
+
+</div>
