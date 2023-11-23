@@ -34,7 +34,7 @@ public class PrendaController {
   @Autowired
   private PrendaServicio servicio;
 
-  @GetMapping({"/", "prenda/list"})
+  @GetMapping({ "prenda/list"})
   public String listado(Model model) {
     model.addAttribute("listaPrendas", servicio.findAll());
     TipoPrenda[] tiposPrenda = TipoPrenda.values();  // Obtiene los valores del enumerado
@@ -95,10 +95,10 @@ public class PrendaController {
 
     return "redirect:/prenda/list";
   }
-  @GetMapping("/logout")
-  public String logout(){
-    return "redirect:/prenda/list";
-  }
+// @GetMapping("/logout")
+// public String logout(){
+//   return "redirect:/prenda/list";
+// }
 
 
 
